@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Conference ticket generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <img src="assets/images/logo-full.svg" alt="logo">
+  </header>
+  
+  <main>
+    <header class="main-header">
+      <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+      <h2>Secure your spot at next year's biggest coding conference.</h2>
+    </header>
+
+    <form>
+      <div class="upload-container">
+        Upload Avatar
+        <button class="upload-button">
+          <img src="assets/images/icon-upload.svg" alt="upload">
+          Drag and drop or click to upload
+        </button>
+
+        <span>
+          <img src="assets/images/icon-info.svg" alt="">
+          Upload your photo (JPG or PNG, max size: 500KB).
+        </span>
+      </div>
+
+      <label>
+        Full Name
+        <input type="text">
+      </label>
+
+      <label>
+        Email Address
+        <input type="text" placeholder="example@email.com">
+      </label>
+    
+      <label>
+        GitHub Username
+        <input type="text" placeholder="@yourusername">
+      </label>
+    
+      <button type="submit">Generate My Ticket</button>
+    </form>
+  </main>
+
+</body>
+</html>
