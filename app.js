@@ -1,4 +1,7 @@
 const $form = document.querySelector('form');
+const $fileInput = document.querySelector('#file-input');
+const $uploadButton = document.querySelector('.upload-button')
+
 const errors = {
   avatar: '',
   email: ''
@@ -10,6 +13,7 @@ function init() {
 
 function initEvents() {
   $form.addEventListener('submit', onSubmit);
+  setupFileUpload()
 }
 
 function onSubmit(event) {
@@ -22,16 +26,18 @@ function onSubmit(event) {
   const { elements } = event.currentTarget;
   const $fullName = elements.namedItem('full_name');
   const $email = elements.namedItem('email')
-  const $emailFormError = $email.nextElementSibling
+  const $emailInfoError = $email.nextElementSibling
 
   validateForm({ email: $email.value })
 
   $email.dataset.error = errors.email || '';
-  $emailFormError.classList.toggle('hidden', !errors.email);
-  $emailFormError.querySelector('.error-text').textContent = errors.email;
+  $emailInfoError.classList.toggle('hidden', !errors.email);
+  $emailInfoError.querySelector('.error-text').textContent = errors.email;
   
   // console.log($emailFormError)
 }
+
+
 
 function validateForm({ email }) {
   errors.avatar = ''
@@ -41,5 +47,27 @@ function validateForm({ email }) {
     errors.email = 'Please enter a valid email address.'
   }
 }
+
+function setupFileUpload() {
+  $uploadButton.addEventListener('click', () => $fileInput.click())
+  $fileInput.addEventListener('change', () => handleFileSelection($fileInput))
+}
+
+// function setupDragAndDrop()
+
+function handleFileSelection ($fileInput) {
+  if ($fileInput.files.length === 0) return
+
+  const file = $fileInput.files[0]
+
+  if (file.size > 512000) {
+    errors.avatar = 'File too large. Please upload a photo under 500KB'
+    
+    $fileInput.value = ''
+  } else {
+    errors.avatar = ''
+  } 
+}
+
 
 init()
