@@ -35,7 +35,6 @@ Users should be able to:
 
 ### Screenshot
 
-- Desktop
 ![](./preview_images/desktop-preview.png)
 
 ### Links
