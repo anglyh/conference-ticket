@@ -160,6 +160,7 @@ form {
   padding: 0.9rem 1.2rem;
   gap: 0.9rem;
   cursor: pointer;
+  transition: background-color 200ms ease-in-out;
 
   &:focus, &.dragging {
     outline: thick double var(--neutral-700);
@@ -233,9 +234,14 @@ button[type="submit"] {
   border-radius: 0.7rem;
   background-color: var(--orange-500);
   cursor: pointer;
+  transition: background-color 200ms ease-in-out;
 
   &:focus {
     outline: 3px double var(--neutral-300);
+  }
+
+  &:hover {
+    background-color: var(--orange-700);
   }
 }
 
@@ -254,6 +260,8 @@ input {
   background-color: #7272722a;
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
 
   &:focus {
     outline: thick double var(--neutral-700);
@@ -266,12 +274,10 @@ input {
   &[data-error]:not([data-error=""]) {
     border-color: var(--orange-500);
   }
-/* 
-  &[data-error]:not([data-error=""]) + .info.error {
-    display: flex;
+
+  &:hover {
+    background-color: #72727253;
   }
-  
-  &[data-error]:not([data-error=""]) +  */
 }
 
 .info.error {
@@ -293,7 +299,7 @@ input {
 .ticket-container {
   display: flex;
   aspect-ratio: 16 / 9;
-  width: 350px;
+  width: 300px;
   padding: 1rem;
   margin-top: 3rem;
 

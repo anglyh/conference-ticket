@@ -28,7 +28,9 @@ const CONFIG = {
     fileSize: 'File too large. Please upload a photo under 500KB.',
     fileType: 'Invalid file type. Please upload JPG or PNG files only',
     emailRequired: 'Email address is required',
-    emailInvalid: 'Please enter a valid email address.'
+    emailInvalid: 'Please enter a valid email address.',
+    fullNameRequired: 'Please enter your name',
+    githubRequired: 'Please enter your github username'
   },
   emailPattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 }
@@ -42,7 +44,9 @@ const formData = {
 
 const errors = {
   avatar: '',
-  email: ''
+  fullName: '',
+  email: '',
+  github: '',
 }
 
 function init() {
@@ -71,10 +75,10 @@ function onSubmit(event) {
   const $avatar = elements.namedItem('avatar');
   const avatar = $avatar.files[0]
   
-  validateEmail($email)
+  validateFormData($email, $fullName, $githubUsername)
   validateFile(avatar)
 
-  if (errors.email || errors.avatar) return
+  if (errors.email || errors.avatar || errors.fullName || errors.github) return
 
   formData.fullName = $fullName.value.trim();
   formData.email = $email.value.trim();
@@ -83,8 +87,10 @@ function onSubmit(event) {
   displayTicket(formData)
 }
 
-function validateEmail($email) {
+function validateFormData($email, $fullName, $githubUsername) {
   clearError('email');
+  clearError('fullName');
+  clearError('github')
 
   if (!$email.value.trim()) {
     setError('email', CONFIG.errorMessages.emailRequired)
@@ -96,6 +102,24 @@ function validateEmail($email) {
   const $emailInfoError = $email.nextElementSibling
   $emailInfoError.classList.toggle('hidden', !errors.email);
   $emailInfoError.querySelector('.text').textContent = errors.email;
+
+  if (!$fullName.value.trim()) {
+    setError('fullName', CONFIG.errorMessages.fullNameRequired)
+  }
+
+  $fullName.dataset.error = errors.fullName || '';
+  const $fullNameInfoError = $fullName.nextElementSibling
+  $fullNameInfoError.classList.toggle('hidden', !errors.fullName)
+  $fullNameInfoError.querySelector('.text').textContent = errors.fullName
+
+  if (!$githubUsername.value.trim()) {
+    setError('github', CONFIG.errorMessages.githubRequired)
+  }
+
+  $githubUsername.dataset.error = errors.github || '';
+  const $githubUsernameInfoError = $githubUsername.nextElementSibling
+  $githubUsernameInfoError.classList.toggle('hidden', !errors.github)
+  $githubUsernameInfoError.querySelector('.text').textContent = errors.github
 }
 
 function onClickUploadButton() {

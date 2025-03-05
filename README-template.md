@@ -16,8 +16,6 @@ This is a solution to the [Conference ticket generator challenge on Frontend Men
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -37,19 +35,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./preview_images/desktop-preview.png.jpg)
+![](./preview_images/tablet-preview.png)
+![](./preview_images/mobile-preview.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -61,59 +52,69 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+During this project, I gained valuable insights into several key web development techniques:
 
-To see how you can add code snippets, see below:
+- Implementing form validation techniques to enhance user experience and data integrity
+- Creating a customizable file input with advanced features like drag and drop, preview, and error handling
+- Mastering CSS techniques for positioning and styling images using background-image
+- Managing state in a vanilla JavaScript application without relying on a framework
+- Dynamically updating the DOM based on user interactions and handling asynchronous data fetching
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+function validateFormData($email, $fullName, $githubUsername) {
+  clearError('email');
+  clearError('fullName');
+  clearError('github')
+
+  if (!$email.value.trim()) {
+    setError('email', CONFIG.errorMessages.emailRequired)
+  } else if (!CONFIG.emailPattern.test($email.value)) {
+    setError('email', CONFIG.errorMessages.emailInvalid)
+  }
+}
+
+function validateFile(file) {
+  if (!file) {
+    setError('avatar', CONFIG.errorMessages.fileRequired)
+    return false
+  }
+
+  if (!CONFIG.allowedFileTypes.includes(file.type)) {
+    setError('avatar', CONFIG.errorMessages.fileType)
+    return false
+  }
+
+  if (file.size > CONFIG.maxFileSize) {
+    setError('avatar', CONFIG.errorMessages.fileSize);
+    return false
+  }
+
+  return true
 }
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In future projects, I plan to:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Explore more advanced form validation techniques
+- Improve accessibility features
+- Implement more robust error handling
+- Enhance user experience with more sophisticated UI interactions
+- Learn about client-side and server-side form submissions
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [MDN Web Docs](https://developer.mozilla.org/) - An invaluable resource for web development documentation
+- [JavaScript.info](https://javascript.info/) - Comprehensive JavaScript learning resource
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@anglyh](https://www.frontendmentor.io/profile/yourusername)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I would like to thank the Frontend Mentor community for providing this challenging project and the opportunity to improve my web development skills.
