@@ -38,12 +38,6 @@ Users should be able to:
 - Desktop
 ![](./preview_images/desktop-preview.png)
 
-- Tablet
-![](./preview_images/tablet-preview.png)
-
-- Mobile
-![](./preview_images/mobile-preview.png)
-
 ### Links
 
 - Live Site URL: [Conference Ticket](https://conference-ticket.onrender.com/)
