@@ -35,8 +35,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./preview_images/desktop-preview.png.jpg)
+- Desktop
+![](./preview_images/desktop-preview.png)
+
+- Tablet
 ![](./preview_images/tablet-preview.png)
+
+- Mobile
 ![](./preview_images/mobile-preview.png)
 
 ### Links
